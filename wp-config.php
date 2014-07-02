@@ -13,11 +13,13 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	define( 'DB_HOST', '%%DB_HOST%%' ); // Probably 'localhost'
 }
 
+define('WP_MEMORY_LIMIT', '96M');
+
 // ========================
 // Custom Content Directory
 // ========================
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp_dev_paysysco/content' );
 
 // ================================================
 // You almost certainly do not want to change these
@@ -42,7 +44,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
 // Table prefix
 // Change this if you have multiple installs in the same database
 // ==============================================================
-$table_prefix  = 'wp_';
+$table_prefix  = 'wpd_';
 
 // ================================
 // Language
