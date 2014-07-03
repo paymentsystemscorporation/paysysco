@@ -1,12 +1,25 @@
-
 # BEGIN WordPress
+
 <IfModule mod_rewrite.c>
+
+# Development
+
 RewriteEngine On
 RewriteBase /wp_dev_paysysco/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /wp_dev_paysysco/index.php [L]
+
+# Staging
+
+#RewriteEngine On
+#RewriteBase /
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.php [L]
 </IfModule>
+
+
 
 # END WordPress

@@ -19,11 +19,12 @@ define('WP_MEMORY_LIMIT', '96M');
 // Custom Content Directory
 // ========================
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-if( 'WP_LOCAL_DEV' == true ) {
+if (WP_LOCAL_DEV == 1) {
   define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp_dev_paysysco/content' );
 } else {
-  define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . 'content' );
+  define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
 }
+
 // ================================================
 // You almost certainly do not want to change these
 // ================================================
@@ -47,11 +48,12 @@ define('NONCE_SALT',       '*p{+|{<@I2j[L4je9-QS1T#Or(S/4Z>wNjedkMHi;P`B%qr4o=NI
 // Table prefix
 // Change this if you have multiple installs in the same database
 // ==============================================================
-if( 'WP_LOCAL_DEV' == true ) {
+if (WP_LOCAL_DEV == 1) {
   $table_prefix  = 'wpd_'; // dev site
 } else {
   $table_prefix  = 'wps_'; // staging site
 }
+
 
 // ================================
 // Language
@@ -60,18 +62,11 @@ if( 'WP_LOCAL_DEV' == true ) {
 define( 'WPLANG', '' );
 
 // ===========
-// Show errors
-// ===========
-if( 'WP_LOCAL_DEV' == true ) {
-  ini_set( 'display_errors', 1 );
-  define( 'WP_DEBUG_DISPLAY', true );
-} else {
-// ===========
 // Hide errors
 // ===========
   ini_set( 'display_errors', 0 );
   define( 'WP_DEBUG_DISPLAY', false );
-}
+
 // =================================================================
 // Debug mode
 // Debugging? Enable these. Can also enable them in local-config.php
