@@ -7,7 +7,7 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
   define( 'WP_LOCAL_DEV', false );
-  define( 'DB_NAME', 'ab73240_wp_production_paysyco' );
+  define( 'DB_NAME', 'ab73240_wp_staging_paysyco' );
   define( 'DB_USER', 'ab73240_paysysco' );
   define( 'DB_PASSWORD', 'y^@c5bEmEeG*J8bSN@' );
   define( 'DB_HOST', 'localhost' ); // Probably 'localhost'
