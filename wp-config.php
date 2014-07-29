@@ -1,95 +1,90 @@
 <?php
-// ===================================================
-// Load database info and local development parameters
-// ===================================================
-if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
-	define( 'WP_LOCAL_DEV', true );
-	include( dirname( __FILE__ ) . '/local-config.php' );
-} else {
-  define( 'WP_LOCAL_DEV', false );
-  define( 'DB_NAME', 'ab73240_wp_staging_paysyco' );
-  define( 'DB_USER', 'ab73240_paysysco' );
-  define( 'DB_PASSWORD', 'y^@c5bEmEeG*J8bSN@' );
-  define( 'DB_HOST', 'localhost' ); // Probably 'localhost'
-}
+/**
+ * The base configurations of the WordPress.
+ *
+ * This file has the following configurations: MySQL settings, Table Prefix,
+ * Secret Keys, WordPress Language, and ABSPATH. You can find more information
+ * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
+ * wp-config.php} Codex page. You can get the MySQL settings from your web host.
+ *
+ * This file is used by the wp-config.php creation script during the
+ * installation. You don't have to use the web site, you can just copy this file
+ * to "wp-config.php" and fill in the values.
+ *
+ * @package WordPress
+ */
 
-define('WP_MEMORY_LIMIT', '96M');
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'wp_paysysco');
 
-// ========================
-// Custom Content Directory
-// ========================
-define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-if (WP_LOCAL_DEV == 1) {
-  define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp_dev_paysysco/content' );
-} else {
-  define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
-}
+/** MySQL database username */
+define('DB_USER', 'root');
 
-// ================================================
-// You almost certainly do not want to change these
-// ================================================
-define( 'DB_CHARSET', 'utf8' );
-define( 'DB_COLLATE', '' );
+/** MySQL database password */
+define('DB_PASSWORD', 'root');
 
-// ==============================================================
-// Salts, for security
-// Grab these from: https://api.wordpress.org/secret-key/1.1/salt
-// ==============================================================
-define('AUTH_KEY',         '14g3z^/|;c$6:urq^g`DHWN_i!WZ.Ugc^cogzQD|uma )XJ@?&U:AwTg(fx/K!:Z');
-define('SECURE_AUTH_KEY',  '2+7]R[_;).Z;C, ]Dlpt6H|5~g@ZZG$)|3mLy?=9P@*2klg#nCc,+D|Lt@S_+nt.');
-define('LOGGED_IN_KEY',    '|-,+Ekk|uFd08%.$lQ|Kxihb?8UoE)h;-X{Gs@$%1cQd`,UUNB%X/YH^q`5|DAv ');
-define('NONCE_KEY',        '|K [um@rCXCE|2?eN:?0/KXf1Wp~0Pud+STk_aya@e:_C%jGU%//o;3|Ls32r]v}');
-define('AUTH_SALT',        ')x1pZ#A-N$1KU#|[%#zwC-~sG}D6#Lo6| <Ww-&w$j-W?P{9@+j$.:{.| Y|%W/J');
-define('SECURE_AUTH_SALT', 'eJzzSxK05=-V]ybGC(FGnA`6]p)Jqhe&xTDPDI|@bhFs3ET*#]9py%1bj,gx ,cO');
-define('LOGGED_IN_SALT',   'lAJ6<Xx_xO89Y/O,q-c+#fW+t-E:f!Dz,U.-7}v/n^xQbo-)J@v:8Yli#Q):+{V,');
-define('NONCE_SALT',       '*p{+|{<@I2j[L4je9-QS1T#Or(S/4Z>wNjedkMHi;P`B%qr4o=NI|zR-A[Dlb0w{');
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
 
-// ==============================================================
-// Table prefix
-// Change this if you have multiple installs in the same database
-// ==============================================================
-if (WP_LOCAL_DEV == 1) {
-  $table_prefix  = 'wpd_'; // dev site
-} else {
-  $table_prefix  = 'wps_'; // staging site
-}
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
 
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
 
-// ================================
-// Language
-// Leave blank for American English
-// ================================
-define( 'WPLANG', '' );
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         '!?+ktu_HI[b6T0dWz0[+eKV:ql1Gn+q]o?N91&qUKr3lX|*?Zpm1g|JBJBa$h5PE');
+define('SECURE_AUTH_KEY',  'h4z;i7+4t<?7rzcF$l~@_yC%5epqVEsc-@O*}>-+H~`2mp,T%v+W,46{vqd/<<Zi');
+define('LOGGED_IN_KEY',    'G2m|TgE,[8{>_[EgPY&X0%6++RwS3GQ>:+2-WCLBye/BZF60Z>_K*GvfMNnx;L]_');
+define('NONCE_KEY',        'jXs|nnO-TMeNbVStgdBO4-mqz|gi*Vq;<W7$/R+E+X}Io-;>`c~+I}8o2z.+QwGz');
+define('AUTH_SALT',        '^:=+a-:%#]_H+`}=9(4!a EaeijQzKs2MxxlyQ]-!Jr*lN{;a7@:pd4m~ky!zW$f');
+define('SECURE_AUTH_SALT', '&hnMdifrL!C~bvrofq/`1_Wy< 6&62FFII~eg{yNaN(C.(L]XMk/yi.Vjgf:9H-8');
+define('LOGGED_IN_SALT',   '6lSUdMOg(uTe3%:Do){a5<M;;tS#^ODc7OGF+GwwI3&]nR[Nef-t^I eCmd|6w.;');
+define('NONCE_SALT',       'kH+3^k_,kE=.J5bunBZP<Ol/wA(_3tY;AkeYIsP<5VyP_;m,McYCH[!/,e&=4GvN');
 
-// ===========
-// Hide errors
-// ===========
-  ini_set( 'display_errors', 1 );
-  define('WP_DEBUG', true);
-  define( 'WP_DEBUG_DISPLAY', true );
+/**#@-*/
 
-// =================================================================
-// Debug mode
-// Debugging? Enable these. Can also enable them in local-config.php
-// =================================================================
-// define( 'SAVEQUERIES', true );
-// define( 'WP_DEBUG', true );
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = 'wp_';
 
-// ======================================
-// Load a Memcached config if we have one
-// ======================================
-if ( file_exists( dirname( __FILE__ ) . '/memcached.php' ) )
-	$memcached_servers = include( dirname( __FILE__ ) . '/memcached.php' );
+/**
+ * WordPress Localized Language, defaults to English.
+ *
+ * Change this to localize WordPress. A corresponding MO file for the chosen
+ * language must be installed to wp-content/languages. For example, install
+ * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * language support.
+ */
+define('WPLANG', '');
 
-// ===========================================================================================
-// This can be used to programatically set the stage when deploying (e.g. production, staging)
-// ===========================================================================================
-define( 'WP_STAGE', '%%WP_STAGE%%' );
-define( 'STAGING_DOMAIN', '%%WP_STAGING_DOMAIN%%' ); // Does magic in WP Stack to handle staging domain rewriting
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
 
-// ===================
-// Bootstrap WordPress
-// ===================
-if ( !defined( 'ABSPATH' ) )
-	define( 'ABSPATH', dirname( __FILE__ ) . '/wp/' );
-require_once( ABSPATH . 'wp-settings.php' );
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
